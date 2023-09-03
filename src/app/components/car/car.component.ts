@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class CarComponent {
 
+  car1 = {
+    carId : 1,
+    carName : "BMW"
+  };
+  car2 = {
+    carId : 1,
+    carName : "BMW"
+  };
+  car3 = {
+    carId : 1,
+    carName : "BMW"
+  };
+
+cars=[this.car1, this.car2, this.car3];
+  
+
 }
