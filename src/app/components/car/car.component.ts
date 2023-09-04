@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/models/car';
 import {HttpClient} from '@angular/common/http';
 import { CarResponseModel } from 'src/app/models/carResponseModel';
+import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-car',
@@ -11,24 +12,23 @@ import { CarResponseModel } from 'src/app/models/carResponseModel';
 export class CarComponent implements OnInit{
 
 cars : Car [] =[];
-apiUrl = "https://localhost:44388/api/cars/getall"
+dataLoded = false;
+
 carResponseModel : CarResponseModel={
   data : this.cars,
   messgae : " ",
   succes : true
 };
-constructor (private httpClinet:HttpClient) {}
+constructor (private carService: CarService) {}
 
 ngOnInit():void{
-  this.getCars();
+  this.getCars(); // yazılmazsa ürünler listelenmez
 }
 
 getCars() {
-  this.httpClinet.get<CarResponseModel>(this.apiUrl).subscribe((response) => {
+  this.carService.getCars().subscribe(response=>{
     this.cars=response.data
-
-  });
-}
-
-
+    this.dataLoded = true;
+    });
+  }
 }
