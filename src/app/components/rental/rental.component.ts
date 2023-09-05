@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Color } from 'src/app/models/color';
-import { colorResponseModel } from 'src/app/models/colorResponseModel';
-import { ColorService } from 'src/app/services/color.service';
+import { Rental } from 'src/app/models/rental';
+import { rentalResponseModel } from 'src/app/models/rentalResponseModel';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-rental',
@@ -10,5 +10,25 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class RentalComponent {
  
+    rentals : Rental[] =[];
+    
+    rentalResponseModel : rentalResponseModel={
+      data : this.rentals,
+      messgae : " ",
+      succes : true
+    };
+    constructor (private RentalServie : RentalService) {}
+    
+    ngOnInit():void{
+      this.getRentals(); 
+    }
+    
+    getRentals() {
+      
+      this.RentalServie.getRentals().subscribe(response=>{
+        this.rentals=response.data
+        
+        });
+      }
 
 }
