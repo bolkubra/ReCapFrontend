@@ -1,7 +1,19 @@
-<ul class="list-group">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-    <li class="list-group-item">A fourth item</li>
-    <li class="list-group-item">And a fifth one</li>
-  </ul>
+<table class="table">
+  <thead class="margin">
+      <tr>
+          <th>COLOR İNFORMATİON</th>
+      </tr>
+  </thead>
+  <thead>
+      <tr>
+          <th>Color ID</th>
+          <th>Color Name</th>
+          
+      </tr>
+  </thead>
+  <tr *ngFor = "let color of colors">
+      <td>{{color.colorId}}</td>
+      <td>{{color.colorName}}</td>
+      
+  </tr>
+</table>
