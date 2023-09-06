@@ -1,7 +1,7 @@
 export interface Car{
     carId : number,
     brandId : number,
-    colorId : number,
+    colorName : string,
     carName : string,
     modelYear : number,
     dailyPrice : number,
