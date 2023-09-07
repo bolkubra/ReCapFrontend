@@ -9,16 +9,16 @@ import { Car } from '../models/car';
   providedIn: 'root'
 })
 export class CarService {
-  apiUrl = "https://localhost:44388/api/"
+  apiUrl = "https://localhost:44388/api/cars/getcardetails"
 
   constructor(private httpClinet:HttpClient) { }
 
   getCars() : Observable<CarResponseModel>{
-    let newPath = this.apiUrl + 'cars/getall';
-    return this.httpClinet.get<ListResponseModel<Car>>(newPath)
+    
+    return this.httpClinet.get<CarResponseModel>(this.apiUrl)
     }
 
-    getCarsByBrand(brandId: number): Observable<ListResponseModel<Car>> {
+    /*getCarsByBrand(brandId: number): Observable<ListResponseModel<Car>> {
       let newPath = this.apiUrl + 'cars/getcarsbybrandid?id=';
       return this.httpClinet.get<ListResponseModel<Car>>(newPath + brandId);
     }
@@ -26,6 +26,8 @@ export class CarService {
     getCarsByColor(colorId: number):Observable<ListResponseModel<Car>>{
   let newPath = this.apiUrl + 'cars/getcarsbycolorid?id=';
   return this.httpClinet.get<ListResponseModel<Car>>(newPath+colorId);
-  }
+  }*/
+
+
 }
 
