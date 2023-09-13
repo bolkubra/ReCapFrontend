@@ -9,25 +9,18 @@ import { Car } from '../models/car';
   providedIn: 'root'
 })
 export class CarService {
-  apiUrl = "https://localhost:44388/api/cars/getcardetails"
+  apiUrl = "https://localhost:44388/api/"
 
   constructor(private httpClinet:HttpClient) { }
 
-  getCars() : Observable<CarResponseModel>{
-    
-    return this.httpClinet.get<CarResponseModel>(this.apiUrl)
+    getCars() : Observable<CarResponseModel>{
+    let newPath =this.apiUrl + "cars/getcardetails"
+    return this.httpClinet.get<CarResponseModel>(newPath)
     }
 
-    /*getCarsByBrand(brandId: number): Observable<ListResponseModel<Car>> {
-      let newPath = this.apiUrl + 'cars/getcarsbybrandid?id=';
-      return this.httpClinet.get<ListResponseModel<Car>>(newPath + brandId);
+    getCarsByBrand(brandId: number): Observable<ListResponseModel<Car>> {
+      let newPath = this.apiUrl + "cars/getbybrandid?brandId="+brandId
+      return this.httpClinet.get<ListResponseModel<Car>>(newPath);
     }
-  
-    getCarsByColor(colorId: number):Observable<ListResponseModel<Car>>{
-  let newPath = this.apiUrl + 'cars/getcarsbycolorid?id=';
-  return this.httpClinet.get<ListResponseModel<Car>>(newPath+colorId);
-  }*/
-
-
 }
 
