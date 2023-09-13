@@ -1,18 +1,10 @@
-
-<div  class="alert alert-primary" role="alert" style="text-align: center"> <th>BRANDS İNFORMATİON</th> </div>
-
-<table class="table">
-
-    <thead>
-        <tr>
-            <th>Brand ID</th>
-            <th>Brand Name</th>
-            
-        </tr>
-    </thead>
-    <tr *ngFor = "let brand of brands">
-        <td>{{brand.brandId}}</td>
-        <td>{{brand.brandName}}</td>
-        
-    </tr>
-</table>
+<div class="alert alert-primary" role="alert" style="text-align: center"> <th>BRANDS İNFORMATİON</th> </div>
+<ul class="list-group">
+    <li (click)="setCurrentBrand(brand)"
+    routerLink ="/cars/brand/{{brand.brandId}}"
+     *ngFor = "let brand of brands"
+     [class]="getCurrentBrandClass(brand)">
+        {{brand.brandName}}
+    </li>
+</ul>
+<h5 *ngIf="currentBrand">Şu anda {{currentBrand.brandName}} seçtiniz.</h5> 
