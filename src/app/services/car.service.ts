@@ -23,4 +23,3 @@ export class CarService {
       return this.httpClinet.get<ListResponseModel<Car>>(newPath);
     }
 }
-
