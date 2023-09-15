@@ -22,4 +22,10 @@ export class CarService {
       let newPath = this.apiUrl + "cars/getbybrandid?brandId="+brandId
       return this.httpClinet.get<ListResponseModel<Car>>(newPath);
     }
+    getCarsByColor(colordId: number): Observable<ListResponseModel<Car>> {
+      let newPath = this.apiUrl + "cars/getbycolorid?colorId="+colordId
+      return this.httpClinet.get<ListResponseModel<Car>>(newPath);
+    }
+
+
 }

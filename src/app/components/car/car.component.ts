@@ -28,6 +28,9 @@ ngOnInit():void{
     {
       this.getCarsByBrand(params["brandId"])
     }
+    else if (params["colorId"]){
+      this.getCarsByColor(params["colorId"])
+    }
     else{
       this.getCars();
     }
@@ -47,6 +50,13 @@ getCars() {
       this.dataLoded = true;
       });
     }
+
+    getCarsByColor(colorId : number) {
+      this.carService.getCarsByColor(colorId).subscribe(response=>{
+        this.cars=response.data
+        this.dataLoded = true;
+        });
+      }
 
   
 }
