@@ -6,7 +6,8 @@ const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},// sayfa boş iken carComponenti görüntüle
   {path:"cars",component:CarComponent},
   {path:"cars/brand/:brandId",component:CarComponent},
-  {path:"cars/color/:colorId",component:CarComponent} // tıklandığında ilgili bilgilerin gelmesi
+  {path:"cars/color/:colorId",component:CarComponent},
+  {path:"cars/car/:carId",component:CarComponent}  // tıklandığında ilgili bilgilerin gelmesi
 ];
 
 @NgModule({
