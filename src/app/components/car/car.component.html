@@ -1,30 +1,21 @@
-
-<div *ngIf="dataLoded==false" class="spinner-border text-dark" role="status">
-    <span class="visually-hidden">Loading...</span>
+<div
+  *ngIf="dataLoded == false"
+  class="spinner-border text-primary"
+  role="status">
 </div>
 
+<div class="container">
 <div  class="alert alert-danger" role="alert" style="text-align: center"><th>CARS İNFORMATİON</th>  </div>
-
-
-<table *ngIf="dataLoded!=false" class="table">
-   <thead>
-        <tr>
-            <th>Cars Name</th>
-            <th>Brand Name</th>
-            <th>Color Name</th>
-            <th>Model Year</th>
-            <th>Daily Price</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tr (click)="setCurrentCar(car)" 
-     *ngFor="let car of cars"
-    >
-    <td>{{ car.carName }}</td>
-    <td>{{ car.brandName }}</td>
-    <td>{{ car.colorName }}</td>
-    <td>{{ car.modelYear }}</td>
-    <td>{{ car.dailyPrice }}</td>
-    <td>{{ car.description }}</td>
-    </tr>
-</table>
+  <ul class="list-group">
+    <li *ngFor="let car of cars"
+     class="list-group-item"
+    [class]="getCurrentCarClass(car)" 
+    (click)="setCurrentCar(car)" 
+    routerLink="/cars/car/{{ car.carId }}">
+      <h4>{{ car.carName}}</h4>
+      <p>Renk: {{ car.colorName }}</p>
+      <p>Model Yılı: {{ car.modelYear }}</p>
+      <p>Günlük Ücret: {{ car.dailyPrice }} TL</p>
+    </li>
+  </ul>
+</div>
