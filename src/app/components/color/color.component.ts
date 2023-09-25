@@ -11,11 +11,13 @@ import { ColorService } from 'src/app/services/color.service';
 export class ColorComponent {
   colors : Color [] = [];
   currentColor : Color;
+  filterText :"";
 
   colorResponseModel : colorResponseModel={
     data : this.colors,
     messgae : " ",
-    succes : true
+    succes : true,
+  
   };
 
   constructor (private ColorService : ColorService) {}

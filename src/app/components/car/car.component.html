@@ -12,18 +12,18 @@
   <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Car Name">
 </div>
 
-<div>
+<!--<div>
 {{filterText}} aradınız.
-</div>
+</div> -->
 
 
   <ul class="list-group">
-    <li *ngFor="let car of cars"
+    <li *ngFor="let car of cars | carFilter : filterText" 
      class="list-group-item"
     [class]="getCurrentCarClass(car)" 
     (click)="setCurrentCar(car)" 
     routerLink="/cars/car/{{ car.carId }}">
-      <h4>{{ car.carName |uppercase}}</h4>
+      <h4>{{ car.carName }}</h4>
       <p>Renk: {{ car.colorName }}</p>
       <p>Model Yılı: {{ car.modelYear }}</p>
       <p>Günlük Ücret: {{ car.dailyPrice }} TL</p>

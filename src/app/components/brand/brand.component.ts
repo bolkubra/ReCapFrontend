@@ -12,6 +12,7 @@ export class BrandComponent {
   brands : Brand [] =[];
   currentBrand : Brand;
   dataLoded = false;
+  filterText : "";
   
   brandResponseModel : brandResponseModel={
     data : this.brands,
