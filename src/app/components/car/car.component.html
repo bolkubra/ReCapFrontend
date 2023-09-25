@@ -6,13 +6,24 @@
 
 <div class="container">
 <div  class="alert alert-danger" role="alert" style="text-align: center"><th>CARS İNFORMATİON</th>  </div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label"></label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Car Name">
+</div>
+
+<div>
+{{filterText}} aradınız.
+</div>
+
+
   <ul class="list-group">
     <li *ngFor="let car of cars"
      class="list-group-item"
     [class]="getCurrentCarClass(car)" 
     (click)="setCurrentCar(car)" 
     routerLink="/cars/car/{{ car.carId }}">
-      <h4>{{ car.carName}}</h4>
+      <h4>{{ car.carName |uppercase}}</h4>
       <p>Renk: {{ car.colorName }}</p>
       <p>Model Yılı: {{ car.modelYear }}</p>
       <p>Günlük Ücret: {{ car.dailyPrice }} TL</p>

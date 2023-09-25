@@ -15,6 +15,7 @@ export class CarComponent implements OnInit{
 cars : Car [] =[];
 currentCar : Car;
 dataLoded = false;
+filterText = "";
 
 carResponseModel : CarResponseModel={
   data : this.cars,
