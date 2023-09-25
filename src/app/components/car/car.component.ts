@@ -4,6 +4,10 @@ import {HttpClient} from '@angular/common/http';
 import { CarResponseModel } from 'src/app/models/carResponseModel';
 import { CarService } from 'src/app/services/car.service';
 import { ActivatedRoute } from '@angular/router';
+import { BrandService } from 'src/app/services/brand.service';
+import { ColorService } from 'src/app/services/color.service';
+import { Brand } from 'src/app/models/brand';
+import { Color } from 'src/app/models/color';
 
 @Component({
   selector: 'app-car',
@@ -12,17 +16,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CarComponent implements OnInit{
 
-cars : Car [] =[];
+cars : Car [] = [];
+brands:Brand[] = [];
+colors:Color[] = [];
 currentCar : Car;
 dataLoded = false;
 filterText = "";
+brandFilter = "";
+colorFilter = "";
 
 carResponseModel : CarResponseModel={
   data : this.cars,
   messgae : " ",
   succes : true
 };
-constructor (private carService: CarService, private activedRouter:ActivatedRoute) {}
+constructor (private carService: CarService,
+  private brandService: BrandService,
+  private colorService: ColorService,
+  private activedRouter:ActivatedRoute) {}
 
 ngOnInit():void{
   this.activedRouter.params.subscribe(params=>{
@@ -46,15 +57,30 @@ getCars() {
     });
   }
 
-  getCarsByBrand(brandId : number) {
+getBrands() {
+    this.brandService.getBrands().subscribe((response) => {
+      this.brands = response.data;
+      this.dataLoded = true;
+
+    });
+  }
+
+getColors() {
+    this.colorService.getColors().subscribe((response) => {
+      this.colors = response.data;
+      this.dataLoded=true;
+    });
+  }
+
+getCarsByBrand(brandId : number) {
     this.carService.getCarsByBrand(brandId).subscribe(response=>{
       this.cars=response.data
       this.dataLoded = true;
       });
     }
 
-    getCarsByColor(colorId : number) {
-      this.carService.getCarsByColor(colorId).subscribe(response=>{
+getCarsByColor(colorId : number) {
+    this.carService.getCarsByColor(colorId).subscribe(response=>{
         this.cars=response.data
         this.dataLoded = true;
         });
