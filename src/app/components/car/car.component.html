@@ -16,44 +16,25 @@
 {{filterText}} aradınız.
 </div> -->
 
-<!--<div class="row">
+<div class="row">
   <div class="col-md-4">
-    <label>Marka seçiniz</label>
-    <select
-      class="form-select"
-      aria-label="Default select example"
-      [(ngModel)]="brandFilter"
-    >
-      <option *ngFor="let brand of brands" [value]="brand.brandId">
-        {{brand.brandName}}
-      </option>
-    </select>
-  </div>
-
-  <div class="col-md-4">
-    <label>Renk seçiniz</label>
-    <select
-      class="form-select"
-      aria-label="Default select example"
-      [(ngModel)]="colorFilter"
-    >
-      <option *ngFor="let color of colors" [value]="color.colorId">
-        {{ color.colorName}}
-      </option>
-    </select>
-  </div> -->
-
   <label >Marka seçiniz</label>
   <select class="form-select" aria-label="Default select example" [(ngModel)]="brandFilter">
     <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}</option>
-    
   </select>
+  </div>
 
+  <div class="col-md-4">
   <label >Renk seçiniz</label>
   <select class="form-select" aria-label="Default select example" [(ngModel)]="colorFilter">
     <option *ngFor="let color of colors"  [value]="color.colorId">{{color.colorName}}</option>
-    
   </select>
+  </div>
+
+  <div class="col-md-4">
+    <button type="button" class="btn btn-outline-dark " >Filter</button>
+  </div>
+</div>
 
   <ul class="list-group">
     <li *ngFor="let car of cars | carFilter : filterText" 
