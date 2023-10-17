@@ -54,6 +54,7 @@ getCars() {
   this.carService.getCars().subscribe(response=>{
     this.cars=response.data
     this.dataLoded = true;
+    console.log(response.data)
     });
   }
 

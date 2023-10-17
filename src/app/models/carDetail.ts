@@ -6,4 +6,5 @@ export interface CarDetail {
     dailyPrice: number;
     modelYear: number;
     carImagePath: string;
+    description:string;
   }

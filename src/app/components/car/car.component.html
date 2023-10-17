@@ -41,7 +41,7 @@
      class="list-group-item"
     [class]="getCurrentCarClass(car)" 
     (click)="setCurrentCar(car)" 
-    routerLink="/cars/car/{{ car.carId }}">
+    routerLink="carDetails/{{ car.carId }}">
       <h4>{{ car.carName }}</h4>
       <p>Renk: {{ car.colorName}}</p>
       <p>Model Yılı: {{ car.modelYear }}</p>

@@ -8,6 +8,7 @@ const routes: Routes = [
   {path:"cars",component:CarComponent},
   {path:"cars/brand/:brandId",component:CarComponent},
   {path:"cars/color/:colorId",component:CarComponent},
+  {path:"cars/carDetails/:id",component:CarDetailComponent},
   {path:"cars/car/:carId",component:CarDetailComponent}  // tıklandığında ilgili bilgilerin gelmesi
 ];
 

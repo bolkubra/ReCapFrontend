@@ -1,5 +1,46 @@
-<div class="alert alert-primary" role="alert" style="text-align: center"> <th>CAR - DETAİL</th> </div>
-<ul class="list-group">
-    <li routerLink ="/cars">Tüm ürünler</li>
-   
-</ul>
+<div class="row">
+    <div class="col-md-5" *ngFor="let carDetail of carDetails">
+        
+      <ul class="list-group">
+        <li *ngFor="let carImage of carImages" class="list-group-item">
+          <img
+            [src]="baseUrl + carImage.imagePath"
+            style="object-fit: cover"
+            width="150"
+            height="80%"
+          />
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-7">
+      <table>
+          
+      <div *ngFor="let carDetail of carDetails">
+          <tr>
+              <td>Araba Adı:{{carDetail.carName}}</td>
+            </tr>
+            <tr>
+              <td>Marka:{{carDetail.brandName}}</td>
+            </tr>
+            <tr>
+              <td>Renk:{{carDetail.colorName}}</td>
+            </tr>
+      
+            <tr>
+              <td>Model Yılı:{{carDetail.modelYear}}</td>
+            </tr>
+      
+            <tr>
+              <td>Günlük Fiyat:{{carDetail.dailyPrice}}</td>
+            </tr>
+      
+            <tr>
+              <td>Açıklama:{{carDetail.description}}</td>
+            </tr>
+            <button class="btn btn-success mt-3">Kirala</button>
+      </div>
+      
+      </table>
+      
+    </div>
+  </div>
