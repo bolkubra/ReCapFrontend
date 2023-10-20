@@ -8,6 +8,9 @@ import { BrandService } from 'src/app/services/brand.service';
 import { ColorService } from 'src/app/services/color.service';
 import { Brand } from 'src/app/models/brand';
 import { Color } from 'src/app/models/color';
+import { CarDetail } from 'src/app/models/carDetail';
+import { CarDetailService } from 'src/app/services/car-detail.service';
+import { CarImage } from 'src/app/models/carImage';
 
 @Component({
   selector: 'app-car',
@@ -19,11 +22,13 @@ export class CarComponent implements OnInit{
 cars : Car [] = [];
 brands:Brand[] = [];
 colors:Color[] = [];
+carImages : CarImage [] = [];
 currentCar : Car;
 dataLoded = false;
 filterText = "";
 brandFilter : number;
 colorFilter : number;
+
 
 carResponseModel : CarResponseModel={
   data : this.cars,
@@ -110,6 +115,9 @@ getCarsByColor(colorId : number) {
         return "list-group-item"
       }
     }
+
+
+    
   
 }
 

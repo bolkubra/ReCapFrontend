@@ -31,7 +31,7 @@ export class CarService {
       return this.httpClinet.get<ListResponseModel<Car>>(newPath);
     }
     getCarsDetailsId(carDetailId:number):Observable<ListResponseModel<CarDetail>>{
-      let newPath =this.apiUrl+"cars/getcardetails?id="+carDetailId
+      let newPath =this.apiUrl+"cars/getcardetailsbycarid?carId="+carDetailId
       return this.httpClinet.get<ListResponseModel<CarDetail>>(newPath);
     }
 

@@ -18,7 +18,7 @@ carImages : CarImage [] = [];
 currentCarDetail : CarDetail;
 dataLoded = false;
 getCarsDetailsId: any;
-baseUrl:string="https://localhost:4200/Uploads/Images/"
+imageUrl = 'https://localhost:4200/Uploads/Images/';
 constructor (private carService: CarService,
   private activedRouter:ActivatedRoute ,
   private CarImageService : CarImageService) {}
@@ -64,9 +64,22 @@ getCarImagesById(imageId:number){
   this.CarImageService.getCarImagesById(imageId).subscribe(response=>{
     this.carImages=response.data;
     this.dataLoded=true;
+    console.log(response.data)
     
   })
 }
 
+getCarImage(cardetail : CarDetail) {
+  if (cardetail.carImagePath == null) {
+   let path = this.imageUrl + 'default.jpg';
+    return path;
+  } else if (cardetail.carImagePath.length > 1 ) {
+    let path = this.imageUrl + cardetail.carImagePath[1]; 
+    return path;
+  } else {
+    let path = this.imageUrl + cardetail.carImagePath;
+    return path;
+  }
+}
 
 }

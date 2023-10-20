@@ -1,13 +1,10 @@
-<div class="row">
+<div class="row"> 
     <div class="col-md-5" *ngFor="let carDetail of carDetails">
-        
       <ul class="list-group">
         <li *ngFor="let carImage of carImages" class="list-group-item">
           <img
-            [src]="baseUrl + carImage.imagePath"
-            style="object-fit: cover"
-            width="150"
-            height="80%"
+            [src]="getCarImage(carDetail)"
+            
           />
         </li>
       </ul>
