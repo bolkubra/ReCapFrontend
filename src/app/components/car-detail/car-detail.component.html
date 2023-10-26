@@ -2,8 +2,8 @@
     <div class="col-md-5" *ngFor="let carDetail of carDetails">
       <ul class="list-group">
         <li *ngFor="let carImage of carImages" class="list-group-item">
-          <img
-            [src]="getCarImage(carDetail)"
+          <img width="50%"
+            [src]="getCarImage(carImage)"
             
           />
         </li>
