@@ -34,5 +34,8 @@ export class CarService {
       let newPath =this.apiUrl+"cars/getcardetailsbycarid?carId="+carDetailId
       return this.httpClinet.get<ListResponseModel<CarDetail>>(newPath);
     }
-
+    getCarsByBrandAndColor(brandId : number , colorId : number):Observable<ListResponseModel<CarDetail>>{
+      let newPath =this.apiUrl+"cars/getcarsbybrandandcolor?brandId=" + brandId + "&colorId=" + colorId;
+      return this.httpClinet.get<ListResponseModel<CarDetail>>(newPath);
+    }
 }

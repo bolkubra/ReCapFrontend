@@ -21,7 +21,7 @@
   <select class="form-select" aria-label="Default select example" [(ngModel)]="brandFilter">
     <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}</option>
   </select>
-  </div>
+  </div> 
 
   <div class="col-md-4">
   <label >Renk seçiniz</label>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="col-md-4">
-    <button type="button" class="btn btn-outline-dark " >Filter</button>
+    <button (click)="getCarsByBrandAndColor(brandFilter,colorFilter)" type="button" class="btn btn-outline-dark " >Filter</button>
   </div>
 </div>
 
@@ -42,13 +42,13 @@
     (click)="setCurrentCar(car)" 
     routerLink="carDetails/{{ car.carId }}">
       <h4>{{ car.carName }}</h4>
-      <p>Renk: {{ car.colorName}}</p>
-      <p>Model Yılı: {{ car.modelYear }}</p>
-      <p>Günlük Ücret: {{ car.dailyPrice }} TL</p>
+      <p>Color : {{ car.colorName}}</p>
+      <p>Model Year : {{ car.modelYear }}</p>
+      <p>Daily Price : {{ car.dailyPrice }} TL</p>
     </li>
   </ul>   
 
-
+  
 
 
 

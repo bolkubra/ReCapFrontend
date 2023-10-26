@@ -19,9 +19,10 @@ import { CarImage } from 'src/app/models/carImage';
 })
 export class CarComponent implements OnInit{
 
-cars : Car [] = [];
+cars: Car[] = [];
 brands:Brand[] = [];
 colors:Color[] = [];
+carDetails:CarDetail[]=[];
 carImages : CarImage [] = [];
 currentCar : Car;
 dataLoded = false;
@@ -42,6 +43,8 @@ constructor (private carService: CarService,
 
 ngOnInit():void{
   this.activedRouter.params.subscribe(params=>{
+    this.getBrands(); // bunlar yazılmazsa select option içerisi boş gelir
+    this.getColors();
     if(params["brandId"])
     {
       this.getCarsByBrand(params["brandId"])
@@ -52,6 +55,7 @@ ngOnInit():void{
     else{
       this.getCars();
     }
+   
   })
 }
 
@@ -91,7 +95,14 @@ getCarsByColor(colorId : number) {
         this.dataLoded = true;
         });
       }
+getCarsByBrandAndColor (brandId : number , colorId : number){
+  this.carService.getCarsByBrandAndColor(brandId,colorId).subscribe(response=>{
+    this.carDetails=response.data
+    this.dataLoded = true;
+    console.log(response.data)
+    });
 
+}
       setCurrentCar(car:Car){
         this.currentCar=car;
       }

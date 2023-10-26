@@ -1,44 +1,46 @@
-<div class="row"> 
-    <div class="col-md-5" *ngFor="let carDetail of carDetails">
-      <ul class="list-group">
-        <li *ngFor="let carImage of carImages" class="list-group-item">
-          <img width="50%"
-            [src]="getCarImage(carImage)"
-            
-          />
-        </li>
-      </ul>
+<div id="carImageCarousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item" *ngFor="let carImage of carImages; let i = index" [class.active]="i === 0">
+      <img class="d-block w-100" [src]="getCarImage(carImage)" alt="Car Image">
     </div>
-    
-    <div class="col-md-7">
-      <table>
-          
+  </div>
+  
+  <a class="carousel-control-prev" href="#carImageCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carImageCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only ">Next</span>
+  </a>
+</div>
+ 
+  <div class="col-md-7">
+    <table class="text-center">
       <div *ngFor="let carDetail of carDetails">
-          <tr>
-              <td>Araba Adı:{{carDetail.carName}}</td>
-            </tr>
-            <tr>
-              <td>Marka:{{carDetail.brandName}}</td>
-            </tr>
-            <tr>
-              <td>Renk:{{carDetail.colorName}}</td>
-            </tr>
-      
-            <tr>
-              <td>Model Yılı:{{carDetail.modelYear}}</td>
-            </tr>
-      
-            <tr>
-              <td>Günlük Fiyat:{{carDetail.dailyPrice}}</td>
-            </tr>
-      
-            <tr>
-              <td>Açıklama:{{carDetail.description}}</td>
-            </tr>
-            <button class="btn btn-success mt-3">Kirala</button>
+        <tr>
+          <td>Car Name : {{carDetail.carName}}</td>
+        </tr>
+        <tr>
+          <td>Brand : {{carDetail.brandName}}</td>
+        </tr>
+        <tr>
+          <td>Color : {{carDetail.colorName}}</td>
+        </tr>
+        <tr>
+          <td>Model Year : {{carDetail.modelYear}}</td>
+        </tr>
+        <tr>
+          <td>Daily Price : {{carDetail.dailyPrice}}</td>
+        </tr>
+        <tr>
+          <td>Explanation : {{carDetail.description}}</td>
+        </tr>
+        <tr>
+          <td>
+            <button class="btn btn-success mt-3">Rent</button>
+          </td>
+        </tr>
       </div>
-      
-      </table>
-      
-    </div>
+    </table>
   </div>

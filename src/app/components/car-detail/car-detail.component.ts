@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
@@ -6,12 +6,16 @@ import { CarResponseModel } from 'src/app/models/carResponseModel';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-car-detail',
   templateUrl: './car-detail.component.html',
   styleUrls: ['./car-detail.component.css']
 })
-export class CarDetailComponent implements OnInit {
+
+
+export class CarDetailComponent implements OnInit , AfterViewInit {
 
 carDetails : CarDetail [] =[];
 carImages : CarImage [] = [];
@@ -71,11 +75,14 @@ getCarImagesById(imageId:number){
 
 getCarImage(cardetail : any) {
   console.log(cardetail)
-  console.log("xyz")
  
     let path = this.imageUrl + cardetail.imagePath;
     return path;
   
+}
+
+ngAfterViewInit() {
+   $('#carImageCarousel').carousel(); // Carousel başlatma kodu
 }
 
 }
