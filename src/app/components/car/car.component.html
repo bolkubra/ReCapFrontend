@@ -22,6 +22,7 @@
     <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}</option>
   </select>
   </div> 
+  <br>
 
   <div class="col-md-4">
   <label >Renk seçiniz</label>
@@ -29,11 +30,13 @@
     <option *ngFor="let color of colors"  [value]="color.colorId">{{color.colorName}}</option>
   </select>
   </div>
+  <br>
 
   <div class="col-md-4">
-    <button (click)="getCarsByBrandAndColor(brandFilter,colorFilter)" type="button" class="btn btn-outline-dark " >Filter</button>
+    <button  (click)="getCarsByBrandAndColor(brandFilter,colorFilter)" type="button" class="btn btn-outline-dark mt-4 d-block " >Filter</button>
   </div>
 </div>
+<br>
 
   <ul class="list-group">
     <li *ngFor="let car of cars | carFilter : filterText" 
