@@ -97,7 +97,7 @@ getCarsByColor(colorId : number) {
       }
 getCarsByBrandAndColor (brandId : number , colorId : number){
   this.carService.getCarsByBrandAndColor(brandId,colorId).subscribe(response=>{
-    this.carDetails=response.data
+    this.cars=response.data
     this.dataLoded = true;
     console.log(response.data)
     });

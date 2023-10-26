@@ -1,46 +1,48 @@
-<div id="carImageCarousel" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item" *ngFor="let carImage of carImages; let i = index" [class.active]="i === 0">
-      <img class="d-block w-100" [src]="getCarImage(carImage)" alt="Car Image">
-    </div>
+<br>
+
+<div style="display: flex; justify-content: center; align-items: center; width: 800px;">
+<div style="border : 2px solid black ; padding : 30px; width: 50%;">
+  <div style="width: 350px; height: 200px;">
+    <carousel  [noWrap]="noWrapSlides" [interval]="3000"> 
+      <slide *ngFor="let carImage of carImages">
+        <img  style="width: 350px; height: 200px;" [src]="getCarImage(carImage)">
+      </slide>
+    </carousel> <!-- slider kodları -->
   </div>
-  
-  <a class="carousel-control-prev" href="#carImageCarousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carImageCarousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only ">Next</span>
-  </a>
-</div>
  
-  <div class="col-md-7">
-    <table class="text-center">
-      <div *ngFor="let carDetail of carDetails">
-        <tr>
-          <td>Car Name : {{carDetail.carName}}</td>
-        </tr>
-        <tr>
-          <td>Brand : {{carDetail.brandName}}</td>
-        </tr>
-        <tr>
-          <td>Color : {{carDetail.colorName}}</td>
-        </tr>
-        <tr>
-          <td>Model Year : {{carDetail.modelYear}}</td>
-        </tr>
-        <tr>
-          <td>Daily Price : {{carDetail.dailyPrice}}</td>
-        </tr>
-        <tr>
-          <td>Explanation : {{carDetail.description}}</td>
-        </tr>
-        <tr>
-          <td>
-            <button class="btn btn-success mt-3">Rent</button>
-          </td>
-        </tr>
+  
+  
+   
+    <div class="col-md-7">
+      <div style="display : flex; justify-content: center; align-items: center; width: 350px;" >
+        <table class="text-center">
+          <br>
+          <ul class="list-group" *ngFor="let carDetail of carDetails">
+            <li class="list-group-item">
+             <b>Car Name :</b>  {{carDetail.carName}}
+            </li>
+            <li class="list-group-item">
+             <b>Brand : </b> {{carDetail.brandName}}
+            </li>
+            <li class="list-group-item">
+             <b>Color :</b>  {{carDetail.colorName}}
+            </li>
+            <li class="list-group-item">
+             <b>Model Year :</b>  {{carDetail.modelYear}}
+            </li>
+            <li class="list-group-item">
+             <b>Daily Price :</b>  {{carDetail.dailyPrice}}
+            </li>
+            <li class="list-group-item">
+             <b>Explanation : </b>   {{carDetail.description}}
+            </li>
+          </ul>
+          <br>
+          <button class="btn btn-success mt-3">Rent</button>
+        </table>
       </div>
-    </table>
-  </div>
+    </div>
+  
+</div>
+</div>
+<br>

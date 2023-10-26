@@ -1,21 +1,25 @@
-import { Component, OnInit , AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
 import { CarResponseModel } from 'src/app/models/carResponseModel';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
+import { CarouselConfig } from 'ngx-bootstrap/carousel';
 
 declare var $: any;
 
 @Component({
   selector: 'app-car-detail',
   templateUrl: './car-detail.component.html',
+  providers: [
+    { provide: CarouselConfig, useValue: { interval: 1500, noPause: false, showIndicators: true } }
+   ],
   styleUrls: ['./car-detail.component.css']
 })
 
 
-export class CarDetailComponent implements OnInit , AfterViewInit {
+export class CarDetailComponent implements OnInit {
 
 carDetails : CarDetail [] =[];
 carImages : CarImage [] = [];
@@ -27,7 +31,7 @@ constructor (private carService: CarService,
   private activedRouter:ActivatedRoute ,
   private CarImageService : CarImageService) {}
 
-
+noWrapSlides = false;
 ngOnInit(): void {
   this.activedRouter.params.subscribe(params=>{
     if(params["id"]){
@@ -81,8 +85,6 @@ getCarImage(cardetail : any) {
   
 }
 
-ngAfterViewInit() {
-   $('#carImageCarousel').carousel(); // Carousel başlatma kodu
-}
+
 
 }
