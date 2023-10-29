@@ -6,7 +6,7 @@
   </div>
 
 <ul class="list-group">
-    <li [class]="getAllBrandClass()" routerLink ="/cars">Tüm ürünler</li>
+    <li [class]="getAllBrandClass()" routerLink ="/cars">All Products</li>
     <li (click)="setCurrentBrand(brand)"
     routerLink ="/cars/brand/{{brand.brandId}}"
      *ngFor = "let brand of brands | brandFilter : filterText"

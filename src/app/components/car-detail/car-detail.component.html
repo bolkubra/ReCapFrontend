@@ -31,13 +31,24 @@
              <b>Model Year :</b>  {{carDetail.modelYear}}
             </li>
             <li class="list-group-item">
-             <b>Daily Price :</b>  {{carDetail.dailyPrice}}
+             <b>Daily Price :</b>  {{carDetail.dailyPrice}} 
             </li>
             <li class="list-group-item">
              <b>Explanation : </b>   {{carDetail.description}}
             </li>
           </ul>
           <br>
+
+
+          <div class="form-group">
+            <label for="rentDate"> <b>Rental Date</b> </label>
+            <input type="date" class="form-control" [(ngModel)]="rentDate" name="rentDate" />
+          </div>
+          <div class="form-group">
+            <label for="returnDate"><b>Return Date</b></label>
+            <input type="date" class="form-control" [(ngModel)]="returnDate" name="returnDate" />
+          </div>
+
           <button class="btn btn-success mt-3">Rent</button>
         </table>
       </div>

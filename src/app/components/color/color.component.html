@@ -7,7 +7,7 @@
   </div>
 
 <ul class="list-group">
-    <li [class]="getAllColorClass()" routerLink ="/cars">Tüm ürünler</li>
+    <li [class]="getAllColorClass()" routerLink ="/cars">All Products</li>
     <li (click)="setCurrentColor(color)"
     routerLink ="/cars/color/{{color.colorId}}"
      *ngFor = "let color of colors | colorFilter : filterText"

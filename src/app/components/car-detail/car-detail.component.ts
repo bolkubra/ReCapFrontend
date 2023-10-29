@@ -26,6 +26,8 @@ carImages : CarImage [] = [];
 currentCarDetail : CarDetail;
 dataLoded = false;
 getCarsDetailsId: any;
+rentDate: Date | null = null;
+returnDate: Date | null = null;
 imageUrl = 'https://localhost:44388/Uploads/Images/';
 constructor (private carService: CarService,
   private activedRouter:ActivatedRoute ,
