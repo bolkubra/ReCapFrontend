@@ -8,11 +8,18 @@ import { Observable } from 'rxjs';
 })
 export class RentalService {
 
-  apiUrl = "https://localhost:44388/api/rentals/getall"
+  apiUrl = "https://localhost:44388/api/rentals/"
 
   constructor(private httpClinet:HttpClient) { }
 
   getRentals() : Observable<rentalResponseModel>{
-    return this.httpClinet.get<rentalResponseModel>(this.apiUrl)
+    return this.httpClinet.get<rentalResponseModel>(this.apiUrl+"getall")
+    }
+
+  getIsSuitable(rentId : number, startDate : Date, endDate : Date) : Observable<rentalResponseModel>{
+    return this.httpClinet.get<rentalResponseModel>(this.apiUrl+ "getissuitable?rentId="+rentId+"&startDate="+startDate+"&endDate="+endDate
+    )
     }
   }
+
+  

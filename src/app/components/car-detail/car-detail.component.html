@@ -49,7 +49,7 @@
             <input type="date" class="form-control" [(ngModel)]="returnDate" name="returnDate" />
           </div>
 
-          <button class="btn btn-success mt-3">Rent</button>
+          <button class="btn btn-success mt-3" (click)="getIsSuitable (1,rentDate,returnDate)">Rent</button>
         </table>
       </div>
     </div>
