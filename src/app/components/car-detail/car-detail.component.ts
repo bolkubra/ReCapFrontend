@@ -107,7 +107,7 @@ export class CarDetailComponent implements OnInit {
       (response) => {
         if (response.success) {
           const data = {
-            // Göndermek istediğiniz veriler
+            // Göndermek istediğimiz veriler
             CarId: this.carDetails[0].carId,
             CustomerId: 5003,
             RentStartDate: formattedRentDate,
