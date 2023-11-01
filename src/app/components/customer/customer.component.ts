@@ -15,7 +15,7 @@ export class CustomerComponent {
   customerResponseModel : CustomerResponseModel={
     data : this.customer,
     messgae : " ",
-    succes : true
+    success : true
   };
   constructor (private CustomerService: CustomerService) {}
   

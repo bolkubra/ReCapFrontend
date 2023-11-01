@@ -16,7 +16,7 @@ export class ColorComponent {
   colorResponseModel: colorResponseModel = {
     data: this.colors,
     messgae: ' ',
-    succes: true,
+    success: true,
   };
 
   constructor(private ColorService: ColorService) {}

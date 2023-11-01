@@ -15,7 +15,7 @@ export class RentalComponent {
     rentalResponseModel : rentalResponseModel={
       data : this.rentals,
       messgae : " ",
-      succes : true
+      success : true
     };
     constructor (private RentalServie : RentalService) {}
     

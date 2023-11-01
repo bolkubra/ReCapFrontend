@@ -17,7 +17,7 @@ export class BrandComponent {
   brandResponseModel : brandResponseModel={
     data : this.brands,
     messgae : " ",
-    succes : true
+    success : true
   };
   constructor (private BrandService: BrandService) {}
   

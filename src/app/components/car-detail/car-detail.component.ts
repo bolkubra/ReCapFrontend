@@ -8,6 +8,7 @@ import { CarService } from 'src/app/services/car.service';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
 import { RentalService } from 'src/app/services/rental.service';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 declare var $: any;
 
@@ -30,8 +31,14 @@ export class CarDetailComponent implements OnInit {
   getCarsDetailsId: any;
   rentDate: Date = new Date();
   returnDate: Date = new Date();
-  formattedRentDate = new DatePipe('en-US').transform(this.rentDate, 'yyyy-MM-dd');
-  formattedReturnDate = new DatePipe('en-US').transform(this.returnDate, 'yyyy-MM-dd');
+  formattedRentDate = new DatePipe('en-US').transform(
+    this.rentDate,
+    'yyyy-MM-dd'
+  );
+  formattedReturnDate = new DatePipe('en-US').transform(
+    this.returnDate,
+    'yyyy-MM-dd'
+  );
 
   imageUrl = 'https://localhost:44388/Uploads/Images/';
 
@@ -39,7 +46,8 @@ export class CarDetailComponent implements OnInit {
     private carService: CarService,
     private activedRouter: ActivatedRoute,
     private CarImageService: CarImageService,
-    private RentalService: RentalService
+    private RentalService: RentalService,
+    private toastrService: ToastrService
   ) {}
 
   noWrapSlides = false;
@@ -56,7 +64,6 @@ export class CarDetailComponent implements OnInit {
     this.carService.getCarsDetailsId(carId).subscribe((response) => {
       this.carDetails = response.data;
       this.dataLoded = true;
-    
     });
   }
   getCarImages() {
@@ -77,23 +84,45 @@ export class CarDetailComponent implements OnInit {
     this.CarImageService.getCarImagesById(imageId).subscribe((response) => {
       this.carImages = response.data;
       this.dataLoded = true;
-     
     });
   }
 
   getCarImage(cardetail: any) {
-    
-
     let path = this.imageUrl + cardetail.imagePath;
     return path;
   }
 
-  getIsSuitable (rentId : number, formattedRentDate : any, formattedReturnDate : any){
-    console.log(rentId);
-    console.log(formattedRentDate);
-    console.log(formattedReturnDate);
-    this.RentalService.getIsSuitable(rentId, formattedRentDate, formattedReturnDate).subscribe((response)=>{
-    console.log(response.data);
-    })
+  getIsSuitable(
+    rentId: number,
+    formattedRentDate: any,
+    formattedReturnDate: any
+  ) {
+    var mytoastr = this.toastrService;
+
+    this.RentalService.getIsSuitable(
+      this.carDetails[0].carId,
+      formattedRentDate,
+      formattedReturnDate
+    ).subscribe(
+      (response) => {
+        if (response.success) {
+          const data = {
+            // Göndermek istediğiniz veriler
+            CarId: this.carDetails[0].carId,
+            CustomerId: 5003,
+            RentStartDate: formattedRentDate,
+            RentEndDate: formattedReturnDate,
+            ReturnDate: formattedReturnDate,
+          };
+          this.RentalService.postRentals(data).subscribe((postresponse) => {
+            mytoastr.success('Başarılı', 'Başarılı');
+          });
+        }
+      },
+      (error) => {
+        // Hata işlemleri
+        mytoastr.error('Kiralamaya uygun değil:', 'Dikkat');
+      }
+    );
   }
 }
