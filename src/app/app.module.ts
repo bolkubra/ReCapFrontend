@@ -20,6 +20,7 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { BrandFilterPipe } from './pipes/brand-filter.pipe';
     CarDetailComponent,
     CarFilterPipe,
     ColorFilterPipe,
-    BrandFilterPipe
+    BrandFilterPipe,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

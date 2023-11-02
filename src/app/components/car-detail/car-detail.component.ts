@@ -9,6 +9,7 @@ import { CarouselConfig } from 'ngx-bootstrap/carousel';
 import { RentalService } from 'src/app/services/rental.service';
 import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -47,7 +48,8 @@ export class CarDetailComponent implements OnInit {
     private activedRouter: ActivatedRoute,
     private CarImageService: CarImageService,
     private RentalService: RentalService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router : Router
   ) {}
 
   noWrapSlides = false;
@@ -106,17 +108,7 @@ export class CarDetailComponent implements OnInit {
     ).subscribe(
       (response) => {
         if (response.success) {
-          const data = {
-            // Göndermek istediğimiz veriler
-            CarId: this.carDetails[0].carId,
-            CustomerId: 5003,
-            RentStartDate: formattedRentDate,
-            RentEndDate: formattedReturnDate,
-            ReturnDate: formattedReturnDate,
-          };
-          this.RentalService.postRentals(data).subscribe((postresponse) => {
-            mytoastr.success('Başarılı', 'Başarılı');
-          });
+          this.router.navigate(["/payment/"+this.carDetails[0].carId])
         }
       },
       (error) => {
