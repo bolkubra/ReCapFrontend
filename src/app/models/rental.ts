@@ -2,8 +2,8 @@ export interface Rental{
     rentalId : number,
     carId : number,
     customerId :  number,
-    rentStartDate : Date,
-    rentEndDate : Date,
-    returnDate : Date
+    rentStartDate : any,
+    rentEndDate : any,
+    returnDate : any
 
 }

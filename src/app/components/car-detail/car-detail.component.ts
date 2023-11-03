@@ -49,7 +49,7 @@ export class CarDetailComponent implements OnInit {
     private CarImageService: CarImageService,
     private RentalService: RentalService,
     private toastrService: ToastrService,
-    private router : Router
+    private router: Router
   ) {}
 
   noWrapSlides = false;
@@ -108,7 +108,7 @@ export class CarDetailComponent implements OnInit {
     ).subscribe(
       (response) => {
         if (response.success) {
-          this.router.navigate(["/payment/"+this.carDetails[0].carId])
+          this.router.navigate(['/payment/' + this.carDetails[0].carId+"/"+this.rentDate+"/"+this.returnDate]);
         }
       },
       (error) => {
