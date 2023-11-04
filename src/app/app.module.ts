@@ -6,6 +6,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule} from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { CommonModule, DatePipe } from '@angular/common'; // CommonModule ve DatePipe'ı içe aktarın
 
 
@@ -21,6 +22,7 @@ import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { PaymentComponent } from './components/payment/payment.component';
+import { BrandlistComponent } from './components/brandlist/brandlist.component';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     CarFilterPipe,
     ColorFilterPipe,
     BrandFilterPipe,
-    PaymentComponent
+    PaymentComponent,
+    BrandlistComponent
   ],
   imports: [
     BrowserModule,
@@ -46,10 +49,11 @@ import { PaymentComponent } from './components/payment/payment.component';
     BrowserAnimationsModule,
     CarouselModule,
     CommonModule,
+    ModalModule,
     ToastrModule.forRoot({ // bir obje 
       positionClass :"toast-bottom-right"})
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
