@@ -3,7 +3,9 @@ import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-brandlist',
@@ -16,14 +18,15 @@ export class BrandlistComponent implements OnInit {
   brandId: any;
   brandName: string;
   modalRef: BsModalRef;
-  brandUpdateForm : FormGroup;
+  brandUpdateForm: FormGroup;
   formBuilder: any;
+  template1: TemplateRef<any>;
 
   constructor(
     private BrandService: BrandService,
     private modalService: BsModalService,
     private toasterService: ToastrService
-  ) {}
+  ) { }
 
   openModal(template: TemplateRef<any>, id: number, name: string) {
     console.log(id);
@@ -31,11 +34,14 @@ export class BrandlistComponent implements OnInit {
   }
 
   openModalUpdate(template: TemplateRef<any>, id: number, name: string) {
-    console.log(id);
+    // Tıklanan markanın bilgilerini form alanlarına atar
+    this.brandId = id; // Bu, Brand ID metin alanını doldurur
+    this.brandName = name; // Bu, Brand Name metin alanını doldurur
+
     this.modalRef = this.modalService.show(template);
   }
 
-  
+
 
   ngOnInit(): void {
     this.getBrands();
@@ -74,7 +80,7 @@ export class BrandlistComponent implements OnInit {
     );
   }
 
-  deleteBrand(id : number){
+  deleteBrand(id: number) {
     var mytoastr = this.toasterService;
     const data = {
       BrandId: id,
@@ -91,7 +97,7 @@ export class BrandlistComponent implements OnInit {
         // Hata işlemleri
         console.log(error);
         mytoastr.error(' işlem başarısız', 'Dikkat');
-        
+
       }
     );
   }
@@ -101,9 +107,11 @@ export class BrandlistComponent implements OnInit {
     const data = {
       BrandId: parseInt(this.brandId),
       BrandName: this.brandName,
+     
     };
     console.log(data);
-    this.BrandService.updateBrand(data ).subscribe(
+
+    this.BrandService.updateBrand(data).subscribe(
       (postresponse) => {
         console.log(postresponse);
         mytoastr.success('veri güncellendi');
@@ -117,7 +125,5 @@ export class BrandlistComponent implements OnInit {
       }
     );
   }
+ 
 }
-
-
-  

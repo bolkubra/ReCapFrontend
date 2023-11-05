@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CarComponent } from './components/car/car.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import { BrandlistComponent } from './components/brandlist/brandlist.component';
+import { BrandlistComponent } from './components/brandlist/brandlistComponent';
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},// sayfa boş iken carComponenti görüntüle
