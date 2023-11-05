@@ -3,6 +3,7 @@ import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-brandlist',
@@ -12,9 +13,11 @@ import { ToastrService } from 'ngx-toastr';
 export class BrandlistComponent implements OnInit {
   brands: Brand[] = [];
   dataLoded = false;
-  brandId: number;
+  brandId: any;
   brandName: string;
   modalRef: BsModalRef;
+  brandUpdateForm : FormGroup;
+  formBuilder: any;
 
   constructor(
     private BrandService: BrandService,
@@ -27,6 +30,13 @@ export class BrandlistComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  openModalUpdate(template: TemplateRef<any>, id: number, name: string) {
+    console.log(id);
+    this.modalRef = this.modalService.show(template);
+  }
+
+  
+
   ngOnInit(): void {
     this.getBrands();
   }
@@ -37,6 +47,10 @@ export class BrandlistComponent implements OnInit {
       this.dataLoded = true;
     });
   }
+
+
+
+
 
   postBrand() {
     var mytoastr = this.toasterService;
@@ -54,7 +68,7 @@ export class BrandlistComponent implements OnInit {
       (error) => {
         // Hata işlemleri
         console.log(error);
-        mytoastr.error('güncellenme işlemi başarısız', 'Dikkat');
+        mytoastr.error('Veri Eklenemedi', 'Dikkat');
 
       }
     );
@@ -81,4 +95,29 @@ export class BrandlistComponent implements OnInit {
       }
     );
   }
+
+  updateBrand() {
+    var mytoastr = this.toasterService;
+    const data = {
+      BrandId: parseInt(this.brandId),
+      BrandName: this.brandName,
+    };
+    console.log(data);
+    this.BrandService.updateBrand(data ).subscribe(
+      (postresponse) => {
+        console.log(postresponse);
+        mytoastr.success('veri güncellendi');
+        this.getBrands();
+        this.modalRef.hide();
+      },
+      (error) => {
+        // Hata işlemleri
+        console.log(error);
+        mytoastr.error('güncelleme işlemi başarısız', 'Dikkat');
+      }
+    );
+  }
 }
+
+
+  

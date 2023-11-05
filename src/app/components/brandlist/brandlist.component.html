@@ -1,52 +1,109 @@
 <br />
 
 <ul class="list-group">
-  <button class="btn btn-success" (click)="openModal(template,0,'')" >Brand Add</button>
+  <button class="btn btn-success" (click)="openModal(template, 0, '')">
+    Brand Add
+  </button>
   <li class="list-group-item" *ngFor="let brand of brands">
     {{ brand.brandName }}
-    <button class="btn btn-warning" (click)="openModal(template,brand.brandId,brand.brandName )" >Update</button>
-    <button class="btn btn-danger" (click)="deleteBrand(brand.brandId )">Delete</button>
+    <button
+      class="btn btn-warning"
+      (click)="openModalUpdate(template1, brand.brandId, brand.brandName)"
+    >
+      Update
+    </button>
+    <button class="btn btn-danger" (click)="deleteBrand(brand.brandId)">
+      Delete
+    </button>
   </li>
 </ul>
 
-
-
-
 <ng-template #template>
-   <div class="modal-header">
-      <h4 class="modal-title pull-left">Modal</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-         <span aria-hidden="true">×</span>
-      </button>
-   </div>
-   <div class="modal-body">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Car Add</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
     <div>
+      <div class="col-md-12">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="brandId"
+            [(ngModel)]="brandId"
+          />
+        </div>
         <div class="col-md-12">
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              placeholder="brandId"
-              [(ngModel)]="brandId"
+              placeholder="brandName"
+              [(ngModel)]="brandName"
             />
-          </div>
-          <div class="col-md-12">
-            <div class="input-group mb-3">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="brandName"
-                [(ngModel)]="brandName"
-              />
-            </div>
           </div>
         </div>
       </div>
-   </div>
-   <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="postBrand()" >Update</button>
-      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
-   </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="postBrand()">
+      Add
+    </button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+      Close
+    </button>
+  </div>
 </ng-template>
 
-
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Car Update</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Brand ID"
+          [(ngModel)]="brandId"
+        />
+      </div>
+      <div class="col-md-12">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Brand Name"
+            [(ngModel)]="brandName"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="updateBrand()">
+      Update
+    </button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+      Close
+    </button>
+  </div>
+</ng-template>
