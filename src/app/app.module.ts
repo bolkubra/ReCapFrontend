@@ -26,6 +26,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { BrandlistComponent } from './components/brandlist/brandlistComponent';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { ColorlistComponent } from './components/colorlist/colorlist.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { CarUpdateComponent } from './components/car-update/car-update.component
     PaymentComponent,
     BrandlistComponent,
     CarAddComponent,
-    CarUpdateComponent
+    CarUpdateComponent,
+    ColorlistComponent
   ],
   imports: [
     BrowserModule,

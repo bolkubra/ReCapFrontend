@@ -1,0 +1,110 @@
+<br />
+
+<ul class="list-group">
+  <button class="btn btn-success" (click)="openModal(template, 0, '')">
+    Color Add
+  </button>
+  <li class="list-group-item" *ngFor="let color of colors">
+    {{ color.colorName }}
+    <button
+      class="btn btn-warning"
+      (click)="openModalUpdate(template1, color.colorId, color.colorName)"
+    >
+      Update
+    </button>
+    <button class="btn btn-danger" (click)="deleteColor(color.colorId)">
+      Delete
+    </button>
+  </li>
+</ul>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Color Add</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <div class="col-md-12">
+        <div class="input-group mb-3">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="colorId"
+            [(ngModel)]="colorId"
+          />
+        </div>
+        <div class="col-md-12">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="colorName"
+              [(ngModel)]="colorName"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="postColor()">
+      Add
+    </button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+      Close
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Color Update</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      <div class="input-group mb-3">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Color ID"
+          [(ngModel)]="colorId"
+        />
+      </div>
+      <div class="col-md-12">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Color Name"
+            [(ngModel)]="colorName"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="updateColor()">
+      Update
+    </button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+      Close
+    </button>
+  </div>
+</ng-template>
+
