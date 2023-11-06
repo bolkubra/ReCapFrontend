@@ -1,0 +1,59 @@
+<form [formGroup]="carAddForm">
+  <div class="mb-3">
+    <div class="form-group">
+      <label>Select Color</label>
+      <select class="form-control" formControlName="colorId">
+        <option *ngFor="let color of colors" [ngValue]="color.colorId">
+          {{ color.colorName }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="mb-3">
+    <div class="form-group">
+      <label>Select Brand</label>
+      <select class="form-control" formControlName="brandId">
+        <option *ngFor="let brand of brands" [ngValue]="brand.brandId">
+          {{ brand.brandName }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="carName"
+      id="carName"
+      formControlName="carName"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <input
+      type="number"
+      class="form-control"
+      placeholder="modelYear"
+      id="modelYear"
+      formControlName="modelYear"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <input
+      type="number"
+      class="form-control"
+      placeholder="dailyPrice"
+      id="dailyPrice"
+      formControlName="dailyPrice"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="description"
+      id="description"
+      formControlName="description"
+    />
+  </div>
+  <button class="btn btn-success" (click)="addNewCar()">Add</button>
+</form>

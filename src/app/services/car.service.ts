@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CarResponseModel } from '../models/carResponseModel';
 import { Observable } from 'rxjs';
@@ -37,5 +37,19 @@ export class CarService {
     getCarsByBrandAndColor(brandId : number , colorId : number):Observable<ListResponseModel<Car>>{
       let newPath =this.apiUrl+"cars/getcarsbybrandandcolor?brandId=" + brandId + "&colorId=" + colorId;
       return this.httpClinet.get<ListResponseModel<Car>>(newPath);
+    }
+    postCar(data: any): Observable<any> {
+      // data gönderiyoruz
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // json formatta gönderiyoruz
+      return this.httpClinet.post(this.apiUrl + 'cars/insert', data, { headers });
+    }
+
+    deleteCar(data: any): Observable<any> {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // json formatta gönderiyoruz
+      return this.httpClinet.post(this.apiUrl + 'cars/delete', data, { headers });
+    }
+    UpdateCar(data: any): Observable<any> {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // json formatta gönderiyoruz
+      return this.httpClinet.post(this.apiUrl + 'cars/update', data, { headers });
     }
 }

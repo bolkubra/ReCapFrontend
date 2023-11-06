@@ -39,6 +39,7 @@
 
   <div class="col-md-4">
     <button  (click)="getCarsByBrandAndColor(brandFilter,colorFilter)" type="button" class="btn btn-light text-dark mt-4 d-block " >Filter</button>
+    <button   routerLink="/cars/add" type="button" class="btn btn-light text-dark mt-4 d-block " >Add</button>
   </div>
 </div>
 <br>
@@ -53,6 +54,12 @@
       <p>Color : {{ car.colorName}}</p>
       <p>Model Year : {{ car.modelYear }}</p>
       <p>Daily Price : {{ car.dailyPrice }} TL</p>
+      <button class="btn btn-danger" (click)="deleteCar(car.carId)">
+        Delete
+      </button>
+      <button class="btn btn-success" routerLink="update/{{ car.carId }}" >
+        Update
+      </button>
     </li>
   </ul>   
 

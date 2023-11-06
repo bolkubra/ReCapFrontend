@@ -11,6 +11,7 @@ import { Color } from 'src/app/models/color';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarImage } from 'src/app/models/carImage';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-car',
@@ -39,7 +40,8 @@ carResponseModel : CarResponseModel={
 constructor (private carService: CarService,
   private brandService: BrandService,
   private colorService: ColorService,
-  private activedRouter:ActivatedRoute) {}
+  private activedRouter:ActivatedRoute,
+  private toastrService : ToastrService) {}
 
 ngOnInit():void{
   this.activedRouter.params.subscribe(params=>{
@@ -127,7 +129,26 @@ getCarsByBrandAndColor (brandId : number , colorId : number){
       }
     }
 
-
+    deleteCar(id: number) {
+      var mytoastr = this.toastrService;
+      const data = {
+        CarId: id,
+      };
+      console.log(data);
+      this.carService.deleteCar(data).subscribe(
+        (postresponse) => {
+          console.log(postresponse);
+          mytoastr.success('veri silindi');
+          this.getCars();
+        },
+        (error) => {
+          // Hata işlemleri
+          console.log(error);
+          mytoastr.error(' işlem başarısız', 'Dikkat');
+  
+        }
+      );
+    }
     
   
 }
