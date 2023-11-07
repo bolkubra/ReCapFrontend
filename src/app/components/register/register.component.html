@@ -1,0 +1,36 @@
+<br>
+<div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="FirstName"
+      [(ngModel)]="FirstName"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="LastName"
+      [(ngModel)]="LastName"
+    />
+  </div>
+<div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Email"
+      [(ngModel)]="Email"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Password"
+      [(ngModel)]="Password"
+    />
+  </div>
+  <button type="button" class="btn btn-default" (click)="register()">
+    Register
+  </button>

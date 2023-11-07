@@ -27,9 +27,13 @@
             <a style="color:#e67e22" class="nav-link disabled" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <form class="d-flex" role="search" *ngIf="IsUserLogin==false">
+          <button class="btn btn-dark"  routerLink="/login" >Login</button>
+          <button class="btn btn-dark"  routerLink="/register" >Register</button>
+        </form>
+        <form class="d-flex" role="search" *ngIf="IsUserLogin==true">
+          <button class="btn btn-dark"  (click)="Logout()" >Logout</button>
+          <p>{{Email}}</p>
         </form>
       </div>
     </div>
