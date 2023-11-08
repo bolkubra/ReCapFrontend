@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg  bg-dark" style=" border-radius: 10px">
+<nav class="navbar navbar-expand-lg" style=" border-radius: 10px ; background-color: #2c2c54">
     <div class="container-fluid">
       <a style="color:#e67e22" class="navbar-brand" href="#" ><b>WheelsOnTheGo</b></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,24 +12,14 @@
           <li class="nav-item">
             <a style="color:#e67e22" class="nav-link" href="#">Link</a>
           </li>
-          <li class="nav-item dropdown">
-            <a style="color:#e67e22" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
+          
           <li class="nav-item">
             <a style="color:#e67e22" class="nav-link disabled" aria-disabled="true">Disabled</a>
           </li>
         </ul>
         <form class="d-flex" role="search" *ngIf="IsUserLogin==false">
-          <button class="btn btn-dark"  routerLink="/login" >Login</button>
-          <button class="btn btn-dark"  routerLink="/register" >Register</button>
+          <button class="btn" style="background-color: #40407a; color: #e67e22;"  routerLink="/login" >Login</button>
+          <button class="btn" style="background-color: #40407a; color: #e67e22;"  routerLink="/register" >Register</button>
         </form>
         <form class="d-flex" role="search" *ngIf="IsUserLogin==true">
           <button class="btn btn-dark"  (click)="Logout()" >Logout</button>
