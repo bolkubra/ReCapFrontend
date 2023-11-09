@@ -11,9 +11,4 @@ dialog {
     width: 80%;
     z-index: 1000px;
  }
- body{
-    background-image: url('/assets/images/bacground.jpg');
-    background-size: cover; /* Resmi pencere boyutuna sığdır */
-   background-attachment: fixed; /* Resmi sabit bir konumda tut */
-
- }
+ 

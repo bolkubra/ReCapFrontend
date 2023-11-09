@@ -5,14 +5,15 @@
   role="status">
 </div>
 
-<div class="container bg-dark" style=" border-radius: 10px">
+<div class="container bg-dark" style="  margin-top: 10px; ">
   <div class="bg-dark text-center">
-    <h4 style="color: #e67e22;">CARS INFORMATION</h4>
+    <br>
+    <h5 style="color: #e67e22; margin-top: 10px; font-weight: bold;">CARS INFORMATION</h5>
   </div>
 
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label"></label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Car Name">
+  <input style="border-radius: 0%;" type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Car Name">
 </div>
 <!--<div>
 {{filterText}} aradınız.
@@ -21,7 +22,7 @@
 <div class="row">
   <div class="col-md-4">
   <label style="color: #e67e22;">Please Brand Color </label>
-  <select class="form-select" aria-label="Default select example" [(ngModel)]="brandFilter">
+  <select style="border-radius: 0%;" class="form-select" aria-label="Default select example" [(ngModel)]="brandFilter">
     <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}</option>
   </select>
   </div> 
@@ -29,7 +30,7 @@
 
   <div class="col-md-4">
   <label style="color: #e67e22;" >Please Choose Color </label>
-  <select class="form-select" aria-label="Default select example" [(ngModel)]="colorFilter">
+  <select style="border-radius: 0%;" class="form-select" aria-label="Default select example" [(ngModel)]="colorFilter">
     <option *ngFor="let color of colors"  [value]="color.colorId">{{color.colorName}}</option>
   </select>
   </div>
@@ -37,9 +38,9 @@
 
  
 
-  <div class="col-md-4">
-    <button  (click)="getCarsByBrandAndColor(brandFilter,colorFilter)" type="button" class="btn btn-light text-dark mt-4 d-block " >Filter</button>
-    <button   routerLink="/cars/add" type="button" class="btn btn-light text-dark mt-4 d-block " >Add</button>
+  <div class="col-md-4 d-flex " >
+    <button style="background-color: #e67e22; color: #ffffff; border-radius: 0%; margin-right: 10px;"  (click)="getCarsByBrandAndColor(brandFilter,colorFilter)" type="button" class="btn btn-light  mt-4 d-block " >Filter</button>
+    <button  style="background-color: #e67e22; color: #ffffff; border-radius: 0%;" routerLink="/cars/add" type="button" class="btn btn-light  mt-4 d-block " >Add</button>
   </div>
 </div>
 <br>

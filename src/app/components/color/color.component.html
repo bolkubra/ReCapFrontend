@@ -1,19 +1,18 @@
 
-<br>
-<div  class="alert alert-success" role="alert" style="text-align: center"> <th>COLOR İNFORMATİON</th> </div>
-
-<div class="mb-3">
+<div class="mb-3" style="margin-top: 0px;">
     <label for="exampleFormControlInput1" class="form-label"></label>
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Color Name">
+    <input style="border-radius: 0%;" type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Color Name">
   </div>
 
-<ul class="list-group">
-  <h3 routerLink="/colorlist">list</h3>
-    <li [class]="getAllColorClass()" routerLink ="/cars">All Products</li>
-    <li (click)="setCurrentColor(color)"
-    routerLink ="/cars/color/{{color.colorId}}"
-     *ngFor = "let color of colors | colorFilter : filterText"
-     [class]="getCurrentColorClass(color)">
-        {{color.colorName}}
-    </li>
-</ul>
+<div >
+  <ul class="list-group" style=" border-radius: 0%;" >
+   <!-- <h3 routerLink="/colorlist">list</h3> -->
+      <li [class]="getAllColorClass()" routerLink ="/cars">All Products</li>
+      <li (click)="setCurrentColor(color)"
+      routerLink ="/cars/color/{{color.colorId}}"
+       *ngFor = "let color of colors | colorFilter : filterText"
+       [class]="getCurrentColorClass(color)">
+          {{color.colorName}}
+      </li>
+  </ul>
+</div>
