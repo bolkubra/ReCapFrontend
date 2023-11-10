@@ -12,6 +12,8 @@ import { CarDetail } from 'src/app/models/carDetail';
 import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarImage } from 'src/app/models/carImage';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-car',
@@ -30,6 +32,7 @@ dataLoded = false;
 filterText = "";
 brandFilter : number;
 colorFilter : number;
+IsUserLogin : boolean;
 
 
 carResponseModel : CarResponseModel={
@@ -41,7 +44,9 @@ constructor (private carService: CarService,
   private brandService: BrandService,
   private colorService: ColorService,
   private activedRouter:ActivatedRoute,
-  private toastrService : ToastrService) {}
+  private toastrService : ToastrService,
+  private authService : AuthService,
+  private localStorageService : LocalStorageService) {}
 
 ngOnInit():void{
   this.activedRouter.params.subscribe(params=>{
@@ -57,6 +62,8 @@ ngOnInit():void{
     else{
       this.getCars();
     }
+    this.IsUserLogin=this.authService.isAuthenticated();
+   
    
   })
 }
@@ -149,7 +156,10 @@ getCarsByBrandAndColor (brandId : number , colorId : number){
         }
       );
     }
-    
+    findImage(image : string){
+      console.log(image)
+      return "https://localhost:44388/Uploads/Images/" + image;
+    }
   
 }
 

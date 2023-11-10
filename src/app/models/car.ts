@@ -7,4 +7,5 @@ export interface Car{
     modelYear:number;
     description:string;
     imagePath:string;
+    carImage : string;
 }
