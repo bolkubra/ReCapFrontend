@@ -1,36 +1,60 @@
-<br>
-<div class="input-group mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="FirstName"
-      [(ngModel)]="FirstName"
-    />
+<br />
+<div class="text-center account-page">
+  <div class="container bg-dark col-md-5" style="margin-top: 10px">
+    <div class="bg-dark text-center">
+      <br />
+      <h5 style="color: #e67e22; margin-top: 10px; font-weight: bold">
+        WheelsOnTheGo
+      </h5>
+      <hr class="solid" style="color: #e67e22" />
+    </div>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="FirstName"
+        [(ngModel)]="FirstName"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="LastName"
+        [(ngModel)]="LastName"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Email"
+        [(ngModel)]="Email"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        [(ngModel)]="Password"
+      />
+    </div>
+    <button
+      type="button"
+      style="background-color: #e67e22; color: #ffffff; border-radius: 0%"
+      (click)="register()"
+    >
+      Register
+    </button>
+
+    <div class="text-light mt-3" style="font-size: 14px">
+     Zaten bir hesabın mı?
+      <a routerLink="/login" style="color:#e67e22"
+        >Hemen giriş yap!</a
+      >
+    </div>
+    <br>
+    <br>
   </div>
-  <div class="input-group mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="LastName"
-      [(ngModel)]="LastName"
-    />
-  </div>
-<div class="input-group mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Email"
-      [(ngModel)]="Email"
-    />
-  </div>
-  <div class="input-group mb-3">
-    <input
-      type="password"
-      class="form-control"
-      placeholder="Password"
-      [(ngModel)]="Password"
-    />
-  </div>
-  <button type="button" class="btn btn-default" (click)="register()">
-    Register
-  </button>
+</div>

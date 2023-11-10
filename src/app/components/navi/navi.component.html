@@ -55,8 +55,8 @@
         </button>
       </form>
       <form class="d-flex" role="search" *ngIf="IsUserLogin == true">
-        <button class="btn btn-dark" (click)="Logout()">Logout</button>
-        <p>{{ Email }}</p>
+        <button class="btn"  style="background-color: #e67e22; color: #ffffff; border-radius: 0%" (click)="Logout()">Logout</button>
+        <p style=" color: #e67e22;"> {{ UserName }} </p>
       </form>
     </div>
   </div>

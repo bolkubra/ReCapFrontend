@@ -12,6 +12,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class NaviComponent implements OnInit {
    IsUserLogin : boolean=false;
    Email : string | null = null;
+   UserName: string | null = null; 
   constructor(
     private authService : AuthService,
     private localStorageService : LocalStorageService,
@@ -21,9 +22,20 @@ export class NaviComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.IsUserLogin=this.authService.isAuthenticated();
-    if(this.IsUserLogin==true){
-      this.Email=this.localStorageService.get("email");
+    this.IsUserLogin = this.authService.isAuthenticated();
+    if (this.IsUserLogin == true) {
+      this.Email = this.localStorageService.get("email") || '';
+  
+      // Isim ve soyisim bilgisini al
+      this.authService.getUserName(this.Email).subscribe(
+        (userName: string) => {
+          console.log(this.UserName);
+          this.UserName = userName;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     }
   }
 
@@ -33,4 +45,6 @@ export class NaviComponent implements OnInit {
     this.IsUserLogin=this.authService.isAuthenticated();
     this.router.navigate(["/"])
   }
+
+ 
 }

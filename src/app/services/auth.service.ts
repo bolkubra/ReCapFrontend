@@ -27,4 +27,9 @@ export class AuthService {
       return false;
     }
   }
+
+  getUserName(email: string): Observable<string> {
+    
+    return this.httpClinet.get<string>(`/api/users/${email}/firstName`);
+  }
 }
