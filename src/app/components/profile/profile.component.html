@@ -1,40 +1,61 @@
+
+<div class="text-center account-page">
+    <div class="container bg-dark col-md-5" style="margin-top: 10px">
+        <div class="bg-dark text-center">
+            <br />
+            <h5 style="color: #e67e22; margin-top: 10px; font-weight: bold; " >
+              WheelsOnTheGo
+            </h5>
+            <hr class="solid" style="color: #e67e22;" >
+          </div>
+
 <form [formGroup]="profileUpdateForm">
-    
-    <div class="input-group mb-3">
-      <input
-        type="number"
-        class="form-control"
-        placeholder="Id"
-        id="Id"
-        formControlName="Id"
-      />
+  <div class="input-group mb-3">
+    <input
+      type="number"
+      class="form-control"
+      placeholder="Id"
+      id="Id"
+      formControlName="Id"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="FirstName"
+      id="FirstName"
+      formControlName="FirstName"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="LastName"
+      id="LastName"
+      formControlName="LastName"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Email"
+      id="Email"
+      formControlName="Email"
+    />
+  </div>
+  <button
+    class="btn"
+    type="button"
+    style="background-color: #e67e22; color: #ffffff; border-radius: 0%"
+    (click)="Update()"
+  >
+    Update
+  </button>
+  <br>
+  <br>
+</form>
     </div>
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="FirstName"
-        id="FirstName"
-        formControlName="FirstName"
-      />
-    </div>
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="LastName"
-        id="LastName"
-        formControlName="LastName"
-      />
-    </div>
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Email"
-        id="Email"
-        formControlName="Email"
-      />
-    </div>
-    <button class="btn btn-success" (click)="Update()">Update</button>
-  </form>
+</div>

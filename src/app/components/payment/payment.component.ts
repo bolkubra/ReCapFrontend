@@ -31,6 +31,7 @@ export class PaymentComponent implements OnInit {
   returnDate: any;
   carId: any;
   dayDifferents: number;
+  cardDigits: string[] = [];
 
   constructor(
     private carService: CarService,
@@ -49,7 +50,26 @@ export class PaymentComponent implements OnInit {
         this.getCarDetail(params['id']);
       }
     });
+    this.updateCardDesign();
   }
+
+  updateCardDesign() {
+    // Temizleme işlemi
+    this.cardDigits = [];
+
+    // Kredi kartı numarasını alın ve her bir karakteri ayırarak diziye ekleyin
+    for (let i = 0; i < this.creditnumber.length; i++) {
+      this.cardDigits.push(this.creditnumber[i]);
+    }
+
+    // Eksik karakterleri '-' ile doldurun
+    while (this.cardDigits.length < 16) {
+      this.cardDigits.push('-');
+    }
+  }
+
+ 
+
   getCarDetail(carId: number) {
     this.carService.getCarsDetailsId(carId).subscribe((response) => {
       this.carDetails = response.data;

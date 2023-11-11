@@ -1,60 +1,90 @@
-<br>
-
-<div style="display: flex; justify-content: center; align-items: center; width: 800px;">
-<div style="border : 2px solid black ; padding : 30px; width: 50%;">
-  <div style="width: 350px; height: 200px;">
-    <carousel  [noWrap]="noWrapSlides" [interval]="3000"> 
-      <slide *ngFor="let carImage of carImages">
-        <img  style="width: 350px; height: 200px;" [src]="getCarImage(carImage)">
-      </slide>
-    </carousel> <!-- slider kodları -->
-  </div>
- 
-  
-  
-   
-    <div class="col-md-7">
-      <div style="display : flex; justify-content: center; align-items: center; width: 350px;" >
-        <table class="text-center">
-          <br>
-          <ul class="list-group" *ngFor="let carDetail of carDetails">
-            <li class="list-group-item">
-             <b>Car Name :</b>  {{carDetail.carName}}
-            </li>
-            <li class="list-group-item">
-             <b>Brand : </b> {{carDetail.brandName}}
-            </li>
-            <li class="list-group-item">
-             <b>Color :</b>  {{carDetail.colorName}}
-            </li>
-            <li class="list-group-item">
-             <b>Model Year :</b>  {{carDetail.modelYear}}
-            </li>
-            <li class="list-group-item">
-             <b>Daily Price :</b>  {{carDetail.dailyPrice}} 
-            </li>
-            <li class="list-group-item">
-             <b>Explanation : </b>   {{carDetail.description}}
-            </li>
-          </ul>
-          <br>
-
-
-          <div class="form-group">
-            <label for="rentDate"> <b>Rental Date</b> </label>
-            <input type="date" class="form-control" [(ngModel)]="rentDate" name="rentDate" />
-          </div>
-          <div class="form-group">
-            <label for="returnDate"><b>Return Date</b></label>
-            <input type="date" class="form-control" [(ngModel)]="returnDate" name="returnDate" />
-          </div>
-
-          <button class="btn btn-success mt-3" (click)="getIsSuitable (1,rentDate,returnDate)">Rent</button>
-         
-        </table>
-      </div>
+<br />
+<div class="text-center account-page">
+  <div class="container bg-dark col-md-7" style="margin-top: 10px">
+    <div class="bg-dark text-center">
+      <br />
+      <h5 style="color: #e67e22; margin-top: 10px; font-weight: bold">
+        WheelsOnTheGo
+      </h5>
+      <hr class="solid" style="color: #e67e22" />
     </div>
-  
+
+    <div style="width: 455px; height: 250px">
+      <carousel [noWrap]="noWrapSlides" [interval]="3000">
+        <slide *ngFor="let carImage of carImages">
+          <img
+            style="width: 455px; height: 250px"
+            [src]="getCarImage(carImage)"
+          />
+        </slide>
+      </carousel>
+      <!-- slider kodları -->
+    </div>
+
+    <div class="container">
+      <div class="row">
+    <div class="col-md-6">
+    <table class="text-center account-page">
+      <br />
+      <ul class="list-group" *ngFor="let carDetail of carDetails">
+        <li class="list-group-item">
+          <b>Car Name :</b> {{ carDetail.carName }}
+        </li>
+        <li class="list-group-item">
+          <b>Brand : </b> {{ carDetail.brandName }}
+        </li>
+        <li class="list-group-item">
+          <b>Color :</b> {{ carDetail.colorName }}
+        </li>
+        <li class="list-group-item">
+          <b>Model Year :</b> {{ carDetail.modelYear }}
+        </li>
+        <li class="list-group-item">
+          <b>Daily Price :</b> {{ carDetail.dailyPrice }}
+        </li>
+        <li class="list-group-item">
+          <b>Explanation : </b> {{ carDetail.description }}
+        </li>
+      </ul>
+      <br />
+    </table>
+    </div>
+
+    
+    <div class="col-md-6">
+      <br>
+      <br>
+      <div class="form-group">
+        <label for="rentDate"> <b style="color:#e67e22">Rental Date</b> </label>
+        <input
+          type="date"
+          class="form-control"
+          [(ngModel)]="rentDate"
+          name="rentDate"
+        />
+      </div>
+      <div class="form-group">
+        <label for="returnDate"><b>Return Date</b></label>
+        <input
+          type="date"
+          class="form-control"
+          [(ngModel)]="returnDate"
+          name="returnDate"
+        />
+      </div>
+      <button
+      class="btn btn-success mt-3"
+      (click)="getIsSuitable(1, rentDate, returnDate)"
+    >
+      Rent
+    </button>
+    </div>
+  </div>
+
 </div>
+     
+    
+
+    <br />
+  </div>
 </div>
-<br>
