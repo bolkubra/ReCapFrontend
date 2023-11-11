@@ -30,6 +30,6 @@ export class AuthService {
 
   getUserName(email: string): Observable<string> {
     
-    return this.httpClinet.get<string>(`/api/users/${email}/firstName`);
+    return this.httpClinet.get<string>(this.apiUrl+"findusername?email="+email);
   }
 }

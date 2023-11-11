@@ -28,9 +28,9 @@ export class NaviComponent implements OnInit {
   
       // Isim ve soyisim bilgisini al
       this.authService.getUserName(this.Email).subscribe(
-        (userName: string) => {
-          console.log(this.UserName);
-          this.UserName = userName;
+        (userName: any) => {
+          console.log(userName);
+          this.UserName = userName["message"];
         },
         (error) => {
           console.error(error);

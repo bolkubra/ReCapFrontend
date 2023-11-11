@@ -10,6 +10,7 @@ import { ColorlistComponent } from './components/colorlist/colorlist.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginGuard } from './guards/login.guard';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},// sayfa boş iken carComponenti görüntüle
@@ -22,8 +23,9 @@ const routes: Routes = [
   {path:"colorlist",component:ColorlistComponent,canActivate:[LoginGuard]},
   {path:"cars/add",component:CarAddComponent,canActivate:[LoginGuard]}, //canActive kullanın girişini kontrol eder
   {path:"cars/update/:carId",component:CarUpdateComponent,canActivate:[LoginGuard]},
-  {path: "login",component:LoginComponent},
-  {path: "register",component:RegisterComponent},
+  {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent},
+  {path:"profile",component:ProfileComponent,canActivate:[LoginGuard]},
   {path:"cars/car/:carId",component:CarDetailComponent}  // tıklandığında ilgili bilgilerin gelmesi
 ];
 

@@ -72,7 +72,7 @@ getCars() {
   this.carService.getCars().subscribe(response=>{
     this.cars=response.data
     this.dataLoded = true;
-    console.log(response.data)
+   
     });
   }
 
@@ -108,7 +108,7 @@ getCarsByBrandAndColor (brandId : number , colorId : number){
   this.carService.getCarsByBrandAndColor(brandId,colorId).subscribe(response=>{
     this.cars=response.data
     this.dataLoded = true;
-    console.log(response.data)
+  
     });
 
 }
@@ -141,10 +141,10 @@ getCarsByBrandAndColor (brandId : number , colorId : number){
       const data = {
         CarId: id,
       };
-      console.log(data);
+     
       this.carService.deleteCar(data).subscribe(
         (postresponse) => {
-          console.log(postresponse);
+          
           mytoastr.success('veri silindi');
           this.getCars();
         },
@@ -157,7 +157,7 @@ getCarsByBrandAndColor (brandId : number , colorId : number){
       );
     }
     findImage(image : string){
-      console.log(image)
+      
       return "https://localhost:44388/Uploads/Images/" + image;
     }
   

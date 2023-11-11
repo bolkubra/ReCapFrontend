@@ -1,0 +1,40 @@
+<form [formGroup]="profileUpdateForm">
+    
+    <div class="input-group mb-3">
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Id"
+        id="Id"
+        formControlName="Id"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="FirstName"
+        id="FirstName"
+        formControlName="FirstName"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="LastName"
+        id="LastName"
+        formControlName="LastName"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Email"
+        id="Email"
+        formControlName="Email"
+      />
+    </div>
+    <button class="btn btn-success" (click)="Update()">Update</button>
+  </form>
