@@ -1,85 +1,111 @@
-<form [formGroup]="carUpdateForm">
-  <div class="input-group mb-3">
-    <input
-      type="number"
-      class="form-control"
-      placeholder="carId"
-      id="carId"
-      formControlName="carId"
-      readonly
-    />
-  </div>
-  <div class="mb-3">
-    <div class="form-group">
-      <label>Select Color</label>
-      <select class="form-control" formControlName="colorId">
-        <option *ngFor="let color of colors" [ngValue]="color.colorId">
-          {{ color.colorName }}
-        </option>
-      </select>
+<div class="text-center account-page">
+  <div class="container bg-dark col-md-13" style="margin-top: 10px">
+    <div class="bg-dark text-center">
+      <br />
+      <h5 style="color: #e67e22; margin-top: 10px; font-weight: bold">
+        WheelsOnTheGo
+      </h5>
+      <hr class="solid" style="color: #e67e22" />
     </div>
-  </div>
-  <div class="mb-3">
-    <div class="form-group">
-      <label>Select Brand</label>
-      <select class="form-control" formControlName="brandId">
-        <option *ngFor="let brand of brands" [ngValue]="brand.brandId">
-          {{ brand.brandName }}
-        </option>
-      </select>
-    </div>
-  </div>
-  <div class="input-group mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="carName"
-      id="carName"
-      formControlName="carName"
-    />
-  </div>
-  <div class="input-group mb-3">
-    <input
-      type="number"
-      class="form-control"
-      placeholder="modelYear"
-      id="modelYear"
-      formControlName="modelYear"
-    />
-  </div>
-  <div class="input-group mb-3">
-    <input
-      type="number"
-      class="form-control"
-      placeholder="dailyPrice"
-      id="dailyPrice"
-      formControlName="dailyPrice"
-    />
-  </div>
-  <div class="input-group mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="description"
-      id="description"
-      formControlName="description"
-    />
-  </div>
-  <button class="btn btn-success" (click)="addUpdateCar()">Update</button>
-</form>
 
-<div *ngFor="let carImage of carImages">
-  <img style="width: 455px; height: 250px" [src]="getCarImage(carImage)" />
-  <button class="btn btn-success" (click)="deleteImage(carImage)">Delete</button>
-</div>
-<form [formGroup]="imageAddForm">
-  <div class="mb-3">
-    <div class="form-group">
-      <div class="form-group">
-        <input type="file" (change)="uploadFile($event)" />
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+      <form [formGroup]="carUpdateForm">
+        <div class="input-group mb-3">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="carId"
+            id="carId"
+            formControlName="carId"
+            readonly
+          />
+        </div>
+        <div class="mb-3">
+          <div class="form-group">
+            <label style="color: #e67e22">Select Color</label>
+            <select class="form-control" formControlName="colorId">
+              <option *ngFor="let color of colors" [ngValue]="color.colorId">
+                {{ color.colorName }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-group">
+            <label style="color: #e67e22">Select Brand</label>
+            <select class="form-control" formControlName="brandId">
+              <option *ngFor="let brand of brands" [ngValue]="brand.brandId">
+                {{ brand.brandName }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="carName"
+            id="carName"
+            formControlName="carName"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="modelYear"
+            id="modelYear"
+            formControlName="modelYear"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="dailyPrice"
+            id="dailyPrice"
+            formControlName="dailyPrice"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="description"
+            id="description"
+            formControlName="description"
+          />
+        </div>
+        <button class="btn btn-success" (click)="addUpdateCar()">Update</button>
+      </form>
+      <br>
+    </div>
+
+    <div class="col-md-6">
+      <div *ngFor="let carImage of carImages">
+        <img
+          style="width: 300px; height: 200px"
+          [src]="getCarImage(carImage)"
+        />
+        <button class="btn btn-danger"  style=" margin-left:5px; border-radius:0px; margin-top: 160px;" (click)="deleteImage(carImage)">
+          X
+        </button>
       </div>
+      <br>
+      <form [formGroup]="imageAddForm">
+        <div class="mb-3">
+          <div class="form-group">
+            <div class="form-group">
+              <input type="file" style="color: #e67e22;" (change)="uploadFile($event)" />
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-success"  style="margin-right:250px;" (click)="addImageCar()">Update</button>
+      </form>
+    </div>
+    </div>
     </div>
   </div>
-  <button class="btn btn-dark" (click)="addImageCar()">Update</button>
-
-</form>
+</div>
