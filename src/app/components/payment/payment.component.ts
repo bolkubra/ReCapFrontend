@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {  Component,  OnInit } from '@angular/core';
 import { Car } from 'src/app/models/car';
 import { HttpClient } from '@angular/common/http';
 import { CarResponseModel } from 'src/app/models/carResponseModel';
@@ -17,12 +17,19 @@ import { NgForm } from '@angular/forms';
 import { PaymentService } from 'src/app/services/payment.service';
 import { DatePipe } from '@angular/common';
 
+
+
+
+
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css'],
+
 })
-export class PaymentComponent implements OnInit {
+
+export class PaymentComponent implements OnInit  {
+
   carDetails: CarDetail[] = [];
   creditnumber: string;
   creditdate: string;
@@ -40,7 +47,8 @@ export class PaymentComponent implements OnInit {
     private rentalService: RentalService,
     private paymentService: PaymentService
   ) {}
-
+  
+  
   ngOnInit(): void {
     this.activedRouter.params.subscribe((params) => {
       if (params['id']) {

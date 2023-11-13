@@ -143,15 +143,26 @@
                 </button>
               </div>
             </div>
-            <div class="row" *ngIf="IsUserLogin == true" style="margin-top: 10px;">
-              
+            <div
+              class="row"
+              *ngIf="IsUserLogin == true"
+              style="margin-top: 10px"
+            >
               <div class="col-md-12">
                 <div class="float-end">
-                  <button class="btn btn-danger" style="margin-right: 10px" (click)="deleteCar(car.carId)">
+                  <button
+                    class="btn btn-danger"
+                    style="margin-right: 10px"
+                    (click)="openDeleteModal(template1,car.carId)"
+                  >
                     Delete
                   </button>
+
+           
+
+
                   <button
-                    class="btn btn-success" 
+                    class="btn btn-success"
                     routerLink="update/{{ car.carId }}"
                   >
                     Update
@@ -186,3 +197,17 @@
 
   <br />
 </div>
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title">Gerçekten Silmek İstiyor musun?</h4>
+
+  </div>
+  <div class="modal-body">
+    <button type="button" class="btn btn-default" (click)="deleteCar()">
+      Delete
+    </button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+      Close
+    </button>
+  </div>
+</ng-template>

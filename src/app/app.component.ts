@@ -13,6 +13,6 @@ export class AppComponent implements OnInit{
   title = 'recap';
   ngOnInit() {
     // Ana rotaya yapılan isteği ele almak için yönlendirme işlemi
-    this.router.navigate(['/cars']);
+    //this.router.navigate(['/cars']);
   }
 }

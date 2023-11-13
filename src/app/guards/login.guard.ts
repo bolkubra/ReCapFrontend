@@ -19,9 +19,11 @@ export class LoginGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if(this.authService.isAuthenticated()){
+      console.log("evet")
       return true;
     }
     else{
+      console.log("hata")
       this.router.navigate(['login'])
       this.toastrService.info('Sisteme Giriş Yapmalısınız');
       return false;

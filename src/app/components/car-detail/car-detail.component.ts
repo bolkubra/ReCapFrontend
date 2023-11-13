@@ -117,4 +117,6 @@ export class CarDetailComponent implements OnInit {
       }
     );
   }
+
+ 
 }

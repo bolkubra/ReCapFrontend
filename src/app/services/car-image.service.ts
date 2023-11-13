@@ -30,4 +30,13 @@ export class CarImageService {
     return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
    
     }
+    deleteImage(carImage:CarImage):Observable<any>{
+      let newPath = this.apiUrl + "carImages/delete";
+      return this.httpClient.post(newPath,carImage)
+    }
+  
+    upload(carImageAdd:CarImage): Observable<any> {
+      let newPath = this.apiUrl + "carImages/add";
+      return this.httpClient.post(newPath,carImageAdd);
+    }
 }

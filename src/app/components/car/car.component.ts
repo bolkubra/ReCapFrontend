@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Car } from 'src/app/models/car';
 import {HttpClient} from '@angular/common/http';
 import { CarResponseModel } from 'src/app/models/carResponseModel';
@@ -14,6 +14,7 @@ import { CarImage } from 'src/app/models/carImage';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-car',
@@ -33,6 +34,9 @@ filterText = "";
 brandFilter : number;
 colorFilter : number;
 IsUserLogin : boolean;
+modalRef : BsModalRef;
+template1: TemplateRef<any>;
+carId : number;
 
 
 carResponseModel : CarResponseModel={
@@ -46,7 +50,8 @@ constructor (private carService: CarService,
   private activedRouter:ActivatedRoute,
   private toastrService : ToastrService,
   private authService : AuthService,
-  private localStorageService : LocalStorageService) {}
+  private localStorageService : LocalStorageService,
+  private modalService : BsModalService) {}
 
 ngOnInit():void{
   this.activedRouter.params.subscribe(params=>{
@@ -136,15 +141,18 @@ getCarsByBrandAndColor (brandId : number , colorId : number){
       }
     }
 
-    deleteCar(id: number) {
+   
+
+    deleteCar() {
       var mytoastr = this.toastrService;
       const data = {
-        CarId: id,
+        CarId: this.carId,
+
       };
      
       this.carService.deleteCar(data).subscribe(
         (postresponse) => {
-          
+          this.modalRef.hide();
           mytoastr.success('veri silindi');
           this.getCars();
         },
@@ -160,7 +168,13 @@ getCarsByBrandAndColor (brandId : number , colorId : number){
       
       return "https://localhost:44388/Uploads/Images/" + image;
     }
+    openDeleteModal(template1: TemplateRef<any>, id: number) {
+      // Tıklanan markanın bilgilerini form alanlarına atar
+      this.carId = id; // Bu, Brand ID metin alanını doldurur
+     
   
+      this.modalRef = this.modalService.show(template1);
+    }
 }
 
 
